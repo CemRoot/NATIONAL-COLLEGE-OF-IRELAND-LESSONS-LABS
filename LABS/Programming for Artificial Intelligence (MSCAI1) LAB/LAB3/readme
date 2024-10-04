@@ -1,0 +1,21 @@
+Features
+1. Dog Class Example
+A simple Dog class to represent a dog with attributes like name, breed, and energy. Methods include bark, walk, and eat.
+
+2. Book Class Example
+Implements a Book class that includes methods to check if the book is a "long read" (more than 300 pages).
+
+3. Bank Account Class Example
+A BankAccount class with methods to deposit, withdraw, and handle balance checks.
+
+4. Circle Class Example
+Implements a Circle class to calculate the area and circumference of a circle.
+
+5. Exception Handling Example
+The divide function demonstrates how to handle division by zero and invalid types with exception handling.
+
+6. Linked List Class Example
+A full implementation of a linked list, including methods to insert nodes at the beginning, end, or specific positions, search for values, delete nodes, and display the list.
+
+Documentation
+Each class and function is thoroughly documented with Python docstrings, explaining their usage and functionality.

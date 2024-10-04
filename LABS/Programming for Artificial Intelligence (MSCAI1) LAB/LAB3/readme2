@@ -1,0 +1,35 @@
+File Handling in Python
+Overview
+This Python project demonstrates various file handling operations such as reading, writing, copying files, handling binary files, and counting words in a file. Additionally, several exercises are implemented to compare files, merge files, and find the most frequent word in a file.
+
+How to Run
+Clone or download the repository.
+Make sure you have Python installed.
+Run the Python script by executing:
+bash
+Copy code
+python main.py
+Features
+1. Reading from a Text File
+Reads the content of a specified text file and prints it.
+
+2. Writing to a Text File
+Writes the given content to a specified file.
+
+3. Copying Content from One File to Another
+Copies the content of a source file to a destination file.
+
+4. Handling Binary Files
+Reads and writes binary data to and from a file.
+
+5. Counting Words in a File
+Counts the number of words in a file and prints the total count.
+
+6. File Comparison Tool (Exercise 1)
+Compares two files line by line and outputs the differences.
+
+7. Merging Multiple Text Files (Exercise 2)
+Merges the content of multiple files into a single output file.
+
+8. Most Frequent Word in a File (Exercise 3)
+Finds and prints the most frequent word(s) in a file, ignoring case and punctuation.
