@@ -1,0 +1,3 @@
+# Ignore the archive file because it is too large and there is no need to share the data.
+
+archive/

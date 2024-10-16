@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}{{ product[1] }}{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <!-- Ürün Resmi -->
+        <img src="{{ url_for('static', filename='images/product_' + str(product[0]) + '.jpg') }}" class="img-fluid" alt="{{ product[1] }}">
+    </div>
+    <div class="col-md-6">
+        <h1 class="mt-4">{{ product[1] }}</h1>
+        <p class="text-muted">{{ product[2] }}</p>
+        <p><strong>Fiyat:</strong> ${{ product[3] }}</p>
+        <p><strong>Stok Durumu:</strong> {{ product[4] }}</p>
+        <form action="{{ url_for('add_to_cart', product_id=product[0]) }}" method="post">
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Adet</label>
+                <input type="number" class="form-control" name="quantity" value="1" min="1" max="{{ product[4] }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Sepete Ekle</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

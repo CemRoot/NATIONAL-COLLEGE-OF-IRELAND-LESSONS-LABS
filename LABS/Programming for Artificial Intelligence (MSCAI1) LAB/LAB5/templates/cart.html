@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Sepetim{% endblock %}
+{% block content %}
+<h1 class="mt-4">Alışveriş Sepetiniz</h1>
+{% if products %}
+<form action="{{ url_for('update_cart') }}" method="post">
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>Ürün</th>
+                <th>Fiyat</th>
+                <th>Adet</th>
+                <th>Toplam</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in products %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>${{ item.price }}</td>
+                <td>
+                    <input type="number" name="quantity_{{ item.product_id }}" value="{{ item.quantity }}" min="1" class="form-control" style="width: 80px;">
+                </td>
+                <td>${{ item.total_price }}</td>
+                <td>
+                    <input type="checkbox" name="remove_{{ item.product_id }}">
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p class="text-end"><strong>Genel Toplam:</strong> ${{ total }}</p>
+    <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary me-2">Sepeti Güncelle</button>
+        <a href="{{ url_for('checkout') }}" class="btn btn-success">Satın Al</a>
+    </div>
+</form>
+{% else %}
+<p>Sepetinizde ürün bulunmamaktadır.</p>
+{% endif %}
+{% endblock %}

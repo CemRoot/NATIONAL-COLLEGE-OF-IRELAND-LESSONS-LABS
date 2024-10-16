@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Ödeme{% endblock %}
+{% block content %}
+<h1 class="mt-4">Ödeme İşlemi</h1>
+<form method="post">
+    <div class="row">
+        <div class="col-md-8">
+            <h3 class="mb-4">Sipariş Detayları</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Ürün</th>
+                        <th>Adet</th>
+                        <th>Toplam</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in products %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>${{ item.total_price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p class="text-end"><strong>Genel Toplam:</strong> ${{ total }}</p>
+        </div>
+        <div class="col-md-4">
+            <h3 class="mb-4">Ödeme Bilgileri</h3>
+            <!-- Ödeme formu veya bilgileri buraya eklenebilir -->
+            <button type="submit" class="btn btn-success btn-lg w-100">Siparişi Tamamla</button>
+        </div>
+    </div>
+</form>
+{% endblock %}
