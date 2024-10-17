@@ -3,6 +3,13 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="\LABS\Data Analytics for Artificial Intelligence\W5 Task\bike.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\LABS\Programming for Artificial Intelligence (MSCAI1) LAB\LAB5\KaggleToDB\archive\category_tree.csv">
           <value>
             <Attribute>
