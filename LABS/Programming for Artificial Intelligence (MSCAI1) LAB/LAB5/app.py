@@ -9,6 +9,7 @@ app.secret_key = 'your_secret_key'  # Replace with your secret key
 
 # MySQL in config.py
 from config import Config
+
 app.config.from_object(Config)
 
 mysql = MySQL(app)
@@ -18,6 +19,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
+
 # User Model
 class User(UserMixin):
     def __init__(self, user_id, username, email, password_hash):
@@ -25,6 +27,7 @@ class User(UserMixin):
         self.username = username
         self.email = email
         self.password_hash = password_hash
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -36,6 +39,7 @@ def load_user(user_id):
         return User(user_id=user[0], username=user[1], email=user[3], password_hash=user[2])
     return None
 
+
 # Registration Route
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -43,10 +47,13 @@ def register():
         username = request.form['username']
         password = request.form['password']
         email = request.form['email']
+
+        # Şifreyi hashleme
         hashed_password = generate_password_hash(password)
 
         cur = mysql.connection.cursor()
         try:
+            # Kullanıcıyı veritabanına kaydetme
             cur.execute("INSERT INTO Users (username, password_hash, email) VALUES (%s, %s, %s)",
                         (username, hashed_password, email))
             mysql.connection.commit()
@@ -55,10 +62,10 @@ def register():
         except:
             mysql.connection.rollback()
             flash('Username or email already exists.', 'danger')
-            return render_template('register.html')
         finally:
             cur.close()
     return render_template('register.html')
+
 
 # Login Route
 @app.route('/login', methods=['GET', 'POST'])
@@ -69,18 +76,22 @@ def login():
 
         cur = mysql.connection.cursor()
         cur.execute("SELECT * FROM Users WHERE username = %s OR email = %s", (username_or_email, username_or_email))
-        user = cur.fetchone()
+        user = cur.fetchone()  # Kullanıcıyı çekiyoruz
         cur.close()
 
-        if user and check_password_hash(user[2], password):
-            user_obj = User(user_id=user[0], username=user[1], email=user[3], password_hash=user[2])
-            login_user(user_obj)
-            flash('Logged in successfully!', 'success')
-            return redirect(url_for('home'))
+        if user:
+            # Hashlenmiş şifreyi doğruluyoruz
+            if check_password_hash(user[2], password):  # user[2] şifrenin hashli hali
+                user_obj = User(user_id=user[0], username=user[1], email=user[3], password_hash=user[2])
+                login_user(user_obj)
+                flash('Logged in successfully!', 'success')
+                return redirect(url_for('home'))
+            else:
+                flash('Invalid username or password.', 'danger')
         else:
             flash('Invalid username or password.', 'danger')
-            return render_template('login.html')
     return render_template('login.html')
+
 
 # Logout Route
 @app.route('/logout')
@@ -90,128 +101,105 @@ def logout():
     flash('You have been logged out.', 'info')
     return redirect(url_for('login'))
 
-# Home Page - Display Products (StockCode, Description, UnitPrice)
+
+# Home Page - Display Products
 @app.route('/')
 def home():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT StockCode, Description, UnitPrice FROM online_retail")  # Adjust query to the new dataset
+    cur.execute("SELECT product_id, Description, UnitPrice FROM Products")
     products = cur.fetchall()
     cur.close()
     return render_template('home.html', products=products)
 
-# Product Details Route
-@app.route('/product/<int:stock_code>')
-def product_detail(stock_code):
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM online_retail WHERE StockCode = %s", (stock_code,))
-    product = cur.fetchone()
-    cur.close()
-    if product:
-        return render_template('product_detail.html', product=product)
-    else:
-        flash('Product not found.', 'warning')
-        return redirect(url_for('home'))
 
-# Add to Cart Functionality
-@app.route('/add_to_cart/<int:stock_code>', methods=['POST'])
-def add_to_cart(stock_code):
+# Add to Cart
+@app.route('/add_to_cart/<int:product_id>', methods=['POST'])
+@login_required
+def add_to_cart(product_id):
     quantity = int(request.form.get('quantity', 1))
-    if 'cart' not in session:
-        session['cart'] = {}
-    cart = session['cart']
-    if str(stock_code) in cart:
-        cart[str(stock_code)] += quantity
+    user_id = current_user.id
+
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM OrderItems WHERE user_id = %s AND product_id = %s", (user_id, product_id))
+    item = cur.fetchone()
+
+    if item:
+        cur.execute("UPDATE OrderItems SET quantity = quantity + %s WHERE user_id = %s AND product_id = %s",
+                    (quantity, user_id, product_id))
     else:
-        cart[str(stock_code)] = quantity
-    session['cart'] = cart
+        cur.execute("INSERT INTO OrderItems (user_id, product_id, quantity) VALUES (%s, %s, %s)",
+                    (user_id, product_id, quantity))
+
+    mysql.connection.commit()
+    cur.close()
+
     flash('Product added to cart.', 'success')
     return redirect(url_for('cart'))
 
-# Shopping Cart Page
+
+# Cart Page
 @app.route('/cart')
+@login_required
 def cart():
-    cart = session.get('cart', {})
-    products = []
-    total = 0
-    if cart:
-        cur = mysql.connection.cursor()
-        for stock_code, quantity in cart.items():
-            cur.execute("SELECT StockCode, Description, UnitPrice FROM online_retail WHERE StockCode = %s", (stock_code,))
-            product = cur.fetchone()
-            if product:
-                product_data = {
-                    'stock_code': product[0],
-                    'description': product[1],
-                    'price': product[2],
-                    'quantity': quantity,
-                    'total_price': product[2] * quantity
-                }
-                total += product_data['total_price']
-                products.append(product_data)
-        cur.close()
+    user_id = current_user.id
+    cur = mysql.connection.cursor()
+
+    cur.execute("""
+        SELECT p.Description, p.UnitPrice, oi.quantity 
+        FROM OrderItems oi 
+        JOIN Products p ON oi.product_id = p.product_id
+        WHERE oi.user_id = %s
+    """, (user_id,))
+
+    products = cur.fetchall()
+    total = sum(item[1] * item[2] for item in products)
+
+    cur.close()
+
     return render_template('cart.html', products=products, total=total)
 
-# Update Cart Quantities and Remove Products
-@app.route('/update_cart', methods=['POST'])
-def update_cart():
-    cart = session.get('cart', {})
-    for stock_code in list(cart.keys()):
-        quantity = int(request.form.get(f'quantity_{stock_code}', 1))
-        if quantity <= 0:
-            cart.pop(stock_code)
-        else:
-            cart[stock_code] = quantity
-    session['cart'] = cart
-    flash('Cart updated.', 'success')
-    return redirect(url_for('cart'))
 
-# Checkout Page
+# Checkout
 @app.route('/checkout', methods=['GET', 'POST'])
 @login_required
 def checkout():
-    cart = session.get('cart', {})
-    if not cart:
+    user_id = current_user.id
+    cur = mysql.connection.cursor()
+
+    cur.execute("""
+        SELECT p.Description, p.UnitPrice, oi.quantity 
+        FROM OrderItems oi 
+        JOIN Products p ON oi.product_id = p.product_id
+        WHERE oi.user_id = %s
+    """, (user_id,))
+
+    cart_items = cur.fetchall()
+
+    if not cart_items:
         flash('Your cart is empty.', 'warning')
         return redirect(url_for('home'))
-    products = []
-    total = 0
-    cur = mysql.connection.cursor()
-    for stock_code, quantity in cart.items():
-        cur.execute("SELECT StockCode, Description, UnitPrice, Quantity FROM online_retail WHERE StockCode = %s", (stock_code,))
-        product = cur.fetchone()
-        if product:
-            if product[3] < quantity:  # Check stock availability (Quantity column)
-                flash(f"Not enough stock for {product[1]}. Available: {product[3]}", 'danger')
-                return redirect(url_for('cart'))
-            product_data = {
-                'stock_code': product[0],
-                'description': product[1],
-                'price': product[2],
-                'quantity': quantity,
-                'total_price': product[2] * quantity
-            }
-            total += product_data['total_price']
-            products.append(product_data)
+
+    total = sum(item[1] * item[2] for item in cart_items)
+
     if request.method == 'POST':
-        # Insert into Orders (Use InvoiceNo if needed)
-        order_date = datetime.now().date()
-        cur.execute("INSERT INTO Orders (user_id, total_amount, order_date) VALUES (%s, %s, %s)",
-                    (current_user.id, total, order_date))
+        cur.execute("INSERT INTO Orders (user_id, total_amount, order_date) VALUES (%s, %s, NOW())",
+                    (user_id, total))
         order_id = cur.lastrowid
-        # Insert into OrderItems and update stock (Quantity column)
-        for item in products:
-            cur.execute("INSERT INTO OrderItems (order_id, stock_code, quantity) VALUES (%s, %s, %s)",
-                        (order_id, item['stock_code'], item['quantity']))
-            # Update product stock
-            cur.execute("UPDATE online_retail SET Quantity = Quantity - %s WHERE StockCode = %s",
-                        (item['quantity'], item['stock_code']))
+
+        for item in cart_items:
+            cur.execute("INSERT INTO OrderItems (order_id, product_id, quantity) VALUES (%s, %s, %s)",
+                        (order_id, item[0], item[2]))
+            cur.execute("DELETE FROM OrderItems WHERE user_id = %s AND product_id = %s", (user_id, item[0]))
+
         mysql.connection.commit()
         cur.close()
-        session.pop('cart')
+
         flash('Order placed successfully!', 'success')
         return redirect(url_for('home'))
+
     cur.close()
-    return render_template('checkout.html', products=products, total=total)
+    return render_template('checkout.html', products=cart_items, total=total)
+
 
 # Run the application
 if __name__ == '__main__':

@@ -1,19 +1,17 @@
 {% extends "base.html" %}
-{% block title %}Anasayfa{% endblock %}
+{% block title %}Home{% endblock %}
+
 {% block content %}
-<h1 class="mt-4 mb-4 text-center">En Popüler Ürünler</h1>
-<div class="row">
+<h1>Our Products</h1>
+<div class="products">
     {% for product in products %}
-    <div class="col-md-4">
-        <div class="card">
-            <!-- Ürün Resmi -->
-            <img src="{{ url_for('static', filename='images/product_' + str(product[0]) + '.jpg') }}" class="card-img-top" alt="{{ product[1] }}">
-            <div class="card-body">
-                <h5 class="card-title">{{ product[1] }}</h5>
-                <p class="card-text">${{ product[3] }}</p>
-                <a href="{{ url_for('product_detail', product_id=product[0]) }}" class="btn btn-primary">Detayları Gör</a>
-            </div>
-        </div>
+    <div class="product-card">
+        <h2>{{ product[1] }}</h2> <!-- Description -->
+        <p>Price: ${{ product[2] }}</p> <!-- UnitPrice: product[2] -->
+        <form action="{{ url_for('add_to_cart', product_id=product[0]) }}" method="POST">
+            <input type="number" name="quantity" value="1" min="1">
+            <button type="submit">Add to Cart</button>
+        </form>
     </div>
     {% endfor %}
 </div>
