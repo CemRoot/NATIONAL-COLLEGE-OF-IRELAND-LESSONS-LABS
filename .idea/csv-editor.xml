@@ -66,6 +66,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\LABS\Programming for Artificial Intelligence (MSCAI1) LAB\LAB6\dataset.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
