@@ -1,5 +1,3 @@
-Tabii ki, istediğin gibi README dosyasına **main.ipynb** dosyasını da ekleyelim. Ayrıca, Türkçe ve İngilizce versiyonlar için hızlı geçişler (hızlı bağlantılar) ekleyerek, dosyanın daha organize ve şık görünmesini sağlayacağım. Ana başlıkları belirgin hale getirip, hızlıca geçiş yapabileceğin bir yapı oluşturacağım.
-
 ### README.md (İngilizce ve Türkçe)
 ---
 
@@ -257,5 +255,3 @@ Chatbot'ların geliştirilmesinde, kelimenin bağlamını ve anlamını anlamak 
 - WordNet'teki synset'ler sayesinde, kelimenin bağlama göre farklı anlamlarını ayırt edebiliriz.
 
 ---
-
-Bu şekilde, proje README dosyasına hem **rdflib** hem de **NLTK** ile ilgili iki ana bölüm eklenmiş oldu. Hızlı geçişler ve her iki dilde içerik yapısıyla daha düzenli ve estetik bir README oluşturdum. Eğer daha fazla detay ya da ekleme yapmak istersen, lütfen bildir!
