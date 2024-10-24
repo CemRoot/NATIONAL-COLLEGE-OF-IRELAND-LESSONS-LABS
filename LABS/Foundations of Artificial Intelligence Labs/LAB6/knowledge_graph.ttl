@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:ex="http://ncirl.ie/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://ncirl.ie/John_Doe">
+    <ex:works_for rdf:resource="http://ncirl.ie/My_Company"/>
+    <ex:has_age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">29</ex:has_age>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ncirl.ie/Jane_Smith">
+    <ex:works_for rdf:resource="http://ncirl.ie/My_Company"/>
+    <ex:has_age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">32</ex:has_age>
+  </rdf:Description>
+</rdf:RDF>
