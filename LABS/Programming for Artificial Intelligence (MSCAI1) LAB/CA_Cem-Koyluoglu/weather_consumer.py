@@ -1,12 +1,15 @@
-from kafka import KafkaConsumer
 import json
+
+from kafka import KafkaConsumer
 
 # Define Kafka Consumer
 consumer = KafkaConsumer(
-    'global_weather',  # topic name
-    bootstrap_servers='localhost:9092',
-    auto_offset_reset='earliest',  # Start reading data from the beginning
-    value_deserializer=lambda x: json.loads(x.decode('utf-8'))  # Decode data in JSON format
+    "global_weather",  # topic name
+    bootstrap_servers="localhost:9092",
+    auto_offset_reset="earliest",  # Start reading data from the beginning
+    value_deserializer=lambda x: json.loads(
+        x.decode("utf-8")
+    ),  # Decode data in JSON format
 )
 
 # Listening to data and displaying it in the terminal

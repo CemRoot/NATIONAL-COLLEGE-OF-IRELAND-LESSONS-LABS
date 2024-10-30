@@ -2,6 +2,7 @@
 
 # 1. Operators in Python
 
+
 def arithmetic_operations(a, b):
     """
     Performs basic arithmetic operations between two numbers.
@@ -14,9 +15,10 @@ def arithmetic_operations(a, b):
         "subtraction": a - b,
         "multiplication": a * b,
         "division": a / b,
-        "modulus": a % b
+        "modulus": a % b,
     }
     return operations
+
 
 def comparison_operations(a, b):
     """
@@ -25,12 +27,9 @@ def comparison_operations(a, b):
     :param b: Second number
     :return: Dictionary with comparison results
     """
-    comparisons = {
-        "greater_than": a > b,
-        "equal": a == b,
-        "not_equal": a != b
-    }
+    comparisons = {"greater_than": a > b, "equal": a == b, "not_equal": a != b}
     return comparisons
+
 
 def logical_operations(a, b):
     """
@@ -42,7 +41,7 @@ def logical_operations(a, b):
     logicals = {
         "and_operation": a and b,
         "or_operation": a or b,
-        "not_operation": not a
+        "not_operation": not a,
     }
     return logicals
 
@@ -59,12 +58,13 @@ def complex_operations(c1, c2):
         "addition": c1 + c2,
         "subtraction": c1 - c2,
         "multiplication": c1 * c2,
-        "division": c1 / c2
+        "division": c1 / c2,
     }
     return operations
 
 
 # 2. Data Types and Type Conversion
+
 
 def type_conversion(value):
     """
@@ -78,6 +78,7 @@ def type_conversion(value):
 
 
 # 3. Control Flow (if-elif-else)
+
 
 def age_category(age):
     """
@@ -97,6 +98,7 @@ def age_category(age):
 
 # 4. Loops (for and while)
 
+
 # Task: Sum of Even Numbers
 def sum_even_numbers():
     """
@@ -104,6 +106,7 @@ def sum_even_numbers():
     :return: Sum of even numbers
     """
     return sum(num for num in range(1, 101) if num % 2 == 0)
+
 
 # Task: Prime Numbers with Nested Loops
 def prime_numbers(n):
@@ -126,8 +129,11 @@ def prime_numbers(n):
 
 # 5. Functions and Lambda Expressions
 
+
 # Task: Lambda Expression for Multiplication
-multiply = lambda a, b, c: a * b * c
+def multiply(a, b, c):
+    return a * b * c
+
 
 # Task: Sorting with Lambda
 def sort_dictionaries_by_key(dicts, key):
@@ -142,6 +148,7 @@ def sort_dictionaries_by_key(dicts, key):
 
 # 6. Lists and List Comprehension
 
+
 # Task: Flatten a Nested List
 def flatten_nested_list(nested_list):
     """
@@ -153,6 +160,7 @@ def flatten_nested_list(nested_list):
 
 
 # 7. Dictionaries and Sets
+
 
 # Task: Merge Dictionaries
 def merge_dictionaries(dict1, dict2):
@@ -179,7 +187,7 @@ if __name__ == "__main__":
     print("Logical Operations:", logical_operations(True, False))
 
     # Complex Number Arithmetic
-    print("Complex Number Operations:", complex_operations(3+2j, 1+7j))
+    print("Complex Number Operations:", complex_operations(3 + 2j, 1 + 7j))
 
     # Data Types and Type Conversion
     print("Type Conversion:", type_conversion(10))
