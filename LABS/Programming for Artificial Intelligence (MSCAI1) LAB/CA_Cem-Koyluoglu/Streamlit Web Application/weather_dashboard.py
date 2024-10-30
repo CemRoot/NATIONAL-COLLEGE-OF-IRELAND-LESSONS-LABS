@@ -1,14 +1,17 @@
-import streamlit as st
-import pandas as pd
-import requests
-import plotly.express as px
 import time
+
+import pandas as pd
+import plotly.express as px
+import requests
+import streamlit as st
 
 # Set up the page title
 st.title("Global Weather Data Dashboard")
 
 # Allow users to choose how often the data refreshes
-refresh_rate = st.selectbox("Choose how often to refresh (seconds)", options=[1, 2, 5, 10], index=2)
+refresh_rate = st.selectbox(
+    "Choose how often to refresh (seconds)", options=[1, 2, 5, 10], index=2
+)
 
 # Load the cleaned weather data
 st.header("Cleaned Weather Data")
@@ -70,7 +73,12 @@ while True:
             st.dataframe(live_data)
 
             # Plot real-time temperature changes
-            fig = px.line(live_data, x="last_updated", y="temperature", title="Real-time Temperature Change")
+            fig = px.line(
+                live_data,
+                x="last_updated",
+                y="temperature",
+                title="Real-time Temperature Change",
+            )
             st.plotly_chart(fig)
         else:
             st.write("Looks like there's no live data right now.")

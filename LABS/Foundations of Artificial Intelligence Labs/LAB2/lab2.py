@@ -21,7 +21,7 @@ Tasks:
 import pandas as pd  # Import pandas library for data manipulation
 
 # Load the dataset from the CSV file into a pandas DataFrame
-dataset = pd.read_csv('payment_fraud.csv')
+dataset = pd.read_csv("payment_fraud.csv")
 
 # Display the first 5 rows of the dataset to get an initial glimpse of the data
 print("First 5 rows of the dataset:")
@@ -52,7 +52,8 @@ print("\nColumns in the dataset:")
 print(dataset.columns.tolist())
 
 # Identify the class label column (change 'label' if your class column has a different name)
-class_label_column = 'label'  # Update this if your class label column has a different name
+# Update this if your class label column has a different name
+class_label_column = "label"
 
 # Check if the class label column exists in the dataset
 if class_label_column in dataset.columns:
@@ -69,15 +70,11 @@ if class_label_column in dataset.columns:
 else:
     print(f"\nClass label column '{class_label_column}' not found in the dataset.")
 
-
 # Discuss the importance of the selected dataset
 print("\nImportance of the selected dataset:")
-print("The payment fraud dataset is important for fraud detection in financial transactions.")
-print("It can help in developing machine learning models to identify fraudulent activities and prevent financial losses.")
-
-
-
-
-
-
-
+print(
+    "The payment fraud dataset is important for fraud detection in financial transactions."
+)
+print(
+    "It can help in developing machine learning models to identify fraudulent activities and prevent financial losses."
+)

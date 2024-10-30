@@ -2,11 +2,17 @@
 
 # Class Implementation Türkçe: Sınıf Uygulaması
 
+import math
+
+
 class Dog:
     """
     A class to represent a dog.
     """
-    def __init__(self, name, breed): # self: referans alır, name: köpeğin adı, breed: köpeğin cinsi
+
+    def __init__(
+        self, name, breed
+    ):  # self: referans alır, name: köpeğin adı, breed: köpeğin cinsi
         self.name = name  # Name of the dog
         self.breed = breed  # Breed of the dog
         self.energy = 100  # Energy level (0-100)
@@ -43,6 +49,7 @@ class Book:
     """
     A class to represent a book.
     """
+
     def __init__(self, title, author, pages):
         self.title = title
         self.author = author
@@ -65,6 +72,7 @@ class BankAccount:
     """
     A class to represent a bank account.
     """
+
     def __init__(self, name, balance):
         self.name = name
         self.balance = balance
@@ -79,6 +87,7 @@ class BankAccount:
         else:
             self.balance -= amount
             print(f"{amount} withdrawn. Current balance: {self.balance}")
+
     def account_balance(self):
         return self.balance
 
@@ -87,21 +96,21 @@ class BankAccount:
 account = BankAccount("Alice", 500)
 account.deposit(200)
 account.withdraw(100)
-account.balance # 600
-
+account.balance  # 600
 
 # Exercise 3: Circle Class
-import math
+
 
 class Circle:
     """
     A class to represent a circle.
     """
+
     def __init__(self, radius):
         self.radius = radius
 
     def calculate_area(self):
-        return math.pi * self.radius ** 2
+        return math.pi * self.radius**2
 
     def calculate_circumference(self):
         return 2 * math.pi * self.radius
@@ -136,15 +145,16 @@ def divide(a, b):
 # Example usage
 print(divide(10, 2))  # 5.0
 print(divide(10, 0))  # Error: Cannot divide by zero.
-print(divide(10, 'a'))  # Error: Unsupported data types.
-
+print(divide(10, "a"))  # Error: Unsupported data types.
 
 # Linked List Class Implementation
+
 
 class Node:
     """
     A class to represent a node in a linked list.
     """
+
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -154,6 +164,7 @@ class LinkedList:
     """
     A class to represent a linked list.
     """
+
     def __init__(self):
         self.head = None
 
