@@ -1,22 +1,23 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 import pandas as pd
 from kafka import KafkaConsumer
 import json
+import os
 
 app = Flask(__name__)
-
+CORS(app)  # CORS izinlerini açıyoruz
 
 # Read and return cleaned weather data
 @app.route('/data', methods=['GET'])
 def get_cleaned_data():
     try:
-        # Load data from file in data folder
+        # Veri dosyasının göreceli yolu
         data = pd.read_csv(
-            r'C:\Users\eminc\OneDrive\Desktop\NATIONAL-COLLEGE-OF-IRELAND-LESSONS-LABS\LABS\Programming for Artificial Intelligence (MSCAI1) LAB\CA_Cem-Koyluoglu\GlobalWeatherRepository.csv')
-        return jsonify(data.to_dict(orient="records")) # Return data as JSON
+            r'C:\Users\eminc\OneDrive\Desktop\NATIONAL-COLLEGE-OF-IRELAND-LESSONS-LABS\LABS\Programming for Artificial Intelligence (MSCAI1) LAB\CA_Cem-Koyluoglu\app\GlobalWeatherRepository.csv')
+        return jsonify(data.to_dict(orient="records"))  # JSON formatında veri döndürme
     except Exception as e:
-        return jsonify({"error": str(e)}), 500 # Return error message with status code 500
-
+        return jsonify({"error": str(e)}), 500  # Hata durumunda mesaj döndürme
 
 # Providing live weather data from Kafka
 @app.route('/live', methods=['GET'])
@@ -32,7 +33,6 @@ def get_live_data():
         if len(live_data) >= 5:
             break
     return jsonify(live_data)
-
 
 if __name__ == '__main__':
     app.run(debug=True)

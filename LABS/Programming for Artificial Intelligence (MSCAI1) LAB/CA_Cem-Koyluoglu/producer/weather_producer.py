@@ -2,18 +2,19 @@ from kafka import KafkaProducer
 import pandas as pd
 import time
 import json
+import os
 
-# Load data from data folder
+# Veri dosyasını göreceli bir yoldan yüklüyoruz
 data = pd.read_csv(
-    r'C:\Users\eminc\OneDrive\Desktop\NATIONAL-COLLEGE-OF-IRELAND-LESSONS-LABS\LABS\Programming for Artificial Intelligence (MSCAI1) LAB\CA_Cem-Koyluoglu\GlobalWeatherRepository.csv')
+    r'C:\Users\eminc\OneDrive\Desktop\NATIONAL-COLLEGE-OF-IRELAND-LESSONS-LABS\LABS\Programming for Artificial Intelligence (MSCAI1) LAB\CA_Cem-Koyluoglu\app\GlobalWeatherRepository.csv')
 
-# Defining Kafka Producer
+# Kafka producer tanımlaması
 producer = KafkaProducer(
     bootstrap_servers='localhost:9092',
     value_serializer=lambda v: json.dumps(v).encode('utf-8')
 )
 
-# Loop that sends each row to Kafka
+# Her satırı Kafka'ya gönderiyoruz
 for index, row in data.iterrows():
     weather_data = {
         "location": row["location_name"],
