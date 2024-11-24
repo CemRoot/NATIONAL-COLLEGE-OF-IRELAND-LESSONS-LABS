@@ -50,7 +50,3 @@ Navigate to the specific lecture or lab directory to view the relevant content. 
 
 ## Contributing
 If you're interested in contributing or have feedback, feel free to reach out through GitHub issues or pull requests.
-
----
-
-By following this structure, any visitor to the repository will clearly understand its purpose and can navigate to the latest updates easily.
