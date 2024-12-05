@@ -14,42 +14,62 @@ Clone this repository to your local machine.
 
 Add the wdbc.data file to the specified folder (/content/Data/) or update the file_path variable in the script.
 
-# 	3.	🛠️ Install Dependencies:
 
-Use the following command to install the necessary libraries:
-```
-!pip install pandas numpy matplotlib seaborn scikit-learn
-```
+## 3. 🛠️ Install Dependencies
 
-	4.	▶️ Run the Script:
-	•	Use your preferred Python IDE or Jupyter Notebook to execute the script step by step.
-	5.	📊 Review Outputs:
-	•	View insights, visualizations, and model performance metrics as they are displayed.
+1. Create a virtual environment (recommended):
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   ```
+
+2. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   pip install pandas numpy matplotlib seaborn scikit-learn
+   ```
+
+3. Launch the Jupyter Notebook:
+   ```bash
+   jupyter notebook Projem.ipynb
+   ```
+
+4. Run the script:
+   - Use your preferred Python IDE or Jupyter Notebook to execute the script step by step.
+
+5. Review outputs:
+   - View insights, visualizations, and model performance metrics as they are displayed.
+
 
 # 🚀 Key Features
 
-	1.	Data Loading and Cleaning:
-	•	Loads the WDBC dataset and assigns meaningful column names.
-	•	Cleans the dataset by removing irrelevant columns (e.g., ID) and converting categorical data to numerical values.
-	2.	EDA and Visualization:
-	•	🔍 Missing Data Analysis:
-	•	Visualizes missing data percentages with a bar chart.
-	•	📊 Class Distribution:
-	•	Displays Malignant (M) vs. Benign (B) distribution.
-	•	📈 Feature Distributions:
-	•	Histograms and boxplots for numerical features.
-	•	🔗 Correlation Analysis:
-	•	Displays feature correlations with a heatmap.
-	3.	Data Preprocessing:
-	•	Normalizes numerical features to improve model performance.
-	•	Selects top 10 features using ANOVA F-statistics for efficient model training.
-	4.	Machine Learning:
-	•	Trains Logistic Regression and Random Forest classifiers.
-	•	Evaluates models with metrics like accuracy, precision, recall, and F1-score.
-	5.	Model Comparison:
-	•	Visualizes performance using confusion matrices, ROC curves, and bar charts comparing metrics.
-	6.	💡 Suggestions for Improvement:
-	•	Offers actionable recommendations for model optimization and enhancement.
+1. **Data Loading and Cleaning:**
+   - Loads the WDBC dataset and assigns meaningful column names.
+   - Cleans the dataset by removing irrelevant columns (e.g., ID) and converting categorical data to numerical values.
+
+2. **EDA and Visualization:**
+   - 🔍 **Missing Data Analysis:**
+     - Visualizes missing data percentages with a bar chart.
+   - 📊 **Class Distribution:**
+     - Displays Malignant (M) vs. Benign (B) distribution.
+   - 📈 **Feature Distributions:**
+     - Histograms and boxplots for numerical features.
+   - 🔗 **Correlation Analysis:**
+     - Displays feature correlations with a heatmap.
+
+3. **Data Preprocessing:**
+   - Normalizes numerical features to improve model performance.
+   - Selects top 10 features using ANOVA F-statistics for efficient model training.
+
+4. **Machine Learning:**
+   - Trains Logistic Regression and Random Forest classifiers.
+   - Evaluates models with metrics like accuracy, precision, recall, and F1-score.
+
+5. **Model Comparison:**
+   - Visualizes performance using confusion matrices, ROC curves, and bar charts comparing metrics.
+
+6. **💡 Suggestions for Improvement:**
+   - Offers actionable recommendations for model optimization and enhancement.
 
 # 🔑 Key Visualizations
 
