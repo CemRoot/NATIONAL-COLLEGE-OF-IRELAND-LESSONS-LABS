@@ -18,3 +18,5 @@ If you're interested in contributing or have feedback, feel free to reach out th
 ---
 
 By following this structure, any visitor to the repository will clearly understand its purpose and can navigate to the latest updates easily.
+
+'Because of the copyright issues, the Lessons materials are not available in this repository.'
