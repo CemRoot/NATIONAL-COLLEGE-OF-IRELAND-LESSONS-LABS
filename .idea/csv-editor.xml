@@ -3,6 +3,27 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="/LABS/Data Analytics for Artificial Intelligence/CA_Test_CemKoyluoglu/D2_Science_Foundation_Ireland_Grants_Commitments.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/LABS/Machine Learning/test.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/LABS/Machine Learning/train.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\LABS\Data Analytics for Artificial Intelligence\W5 Task\bike.csv">
           <value>
             <Attribute>
