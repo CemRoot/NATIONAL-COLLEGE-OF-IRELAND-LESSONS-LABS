@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/LABS/Machine Learning/LAB3-4/Fake News Detection Datasets/Fake.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\LABS\Data Analytics for Artificial Intelligence\W5 Task\bike.csv">
           <value>
             <Attribute>
