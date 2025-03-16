@@ -10,13 +10,6 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="/LABS/Machine Learning/LAB3-4/Fake News Detection Datasets/Fake.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="\LABS\Data Analytics for Artificial Intelligence\W5 Task\bike.csv">
           <value>
             <Attribute>
@@ -46,27 +39,6 @@
           </value>
         </entry>
         <entry key="\LABS\Programming for Artificial Intelligence (MSCAI1) LAB\LAB5\KaggleToDB\archive\category_tree.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\LABS\Programming for Artificial Intelligence (MSCAI1) LAB\LAB5\KaggleToDB\archive\events.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\LABS\Programming for Artificial Intelligence (MSCAI1) LAB\LAB5\KaggleToDB\archive\item_properties_part1.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\LABS\Programming for Artificial Intelligence (MSCAI1) LAB\LAB5\KaggleToDB\archive\item_properties_part2.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
