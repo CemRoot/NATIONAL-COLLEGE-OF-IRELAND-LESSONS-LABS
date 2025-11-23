@@ -1,6 +1,11 @@
 # File Handling in Python
 
+import string
+
 # Example 1: Reading from a Text File
+from collections import Counter
+
+
 def read_file(file_name):
     """
     Reads the content of the given file and prints it.
@@ -83,7 +88,8 @@ def compare_files(file1, file2):
 
         for i, (line1, line2) in enumerate(zip(f1_lines, f2_lines), 1):
             if line1 != line2:
-                print(f"Line {i} differs: '{line1.strip()}' vs '{line2.strip()}'")
+                print(
+                    f"Line {i} differs: '{line1.strip()}' vs '{line2.strip()}'")
 
 
 # Exercise 2: Merge Multiple Text Files
@@ -102,8 +108,7 @@ def merge_files(output_file, *input_files):
 
 
 # Exercise 3: Count the Most Frequent Word in a File
-from collections import Counter
-import string
+
 
 def most_frequent_word(file_name):
     """
@@ -112,14 +117,20 @@ def most_frequent_word(file_name):
     """
     with open(file_name, "r") as file:
         content = file.read().lower()
-        content = content.translate(str.maketrans("", "", string.punctuation))  # Remove punctuation
+        content = content.translate(
+            str.maketrans("", "", string.punctuation)
+        )  # Remove punctuation
         words = content.split()
         word_counts = Counter(words)
 
         max_frequency = max(word_counts.values())
-        most_frequent_words = [word for word, count in word_counts.items() if count == max_frequency]
+        most_frequent_words = [
+            word for word, count in word_counts.items() if count == max_frequency
+        ]
 
-        print(f"The most frequent word(s): {', '.join(most_frequent_words)} (occurs {max_frequency} times)")
+        print(
+            f"The most frequent word(s): {', '.join(most_frequent_words)} (occurs {max_frequency} times)"
+        )
 
 
 # Example Usage:
@@ -128,7 +139,7 @@ if __name__ == "__main__":
     read_file("example.txt")
     write_file("example.txt", "This is a new line of text.")
     copy_file("source.txt", "destination.txt")
-    write_binary_file("example.bin", b'\x00\xFF')
+    write_binary_file("example.bin", b"\x00\xff")
     read_binary_file("example.bin")
     count_words_in_file("example.txt")
 

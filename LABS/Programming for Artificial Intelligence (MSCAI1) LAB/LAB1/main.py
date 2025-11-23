@@ -1,6 +1,5 @@
 """Programming for Artificial Intelligence (MSCAI1) MoodleTeam-24 LAB 1"""
 
-
 """11
 Questions for practise
 11.1 Variables and Data Types
@@ -18,14 +17,16 @@ def convert_float_to_int_string():
     print(f"Integer number: {int_number} ({type(int_number)})")
     print(f"String number: {string_number} ({type(string_number)})")
 
+
 """Create a Python script that accepts a date string in the format YYYY-MM-DD and then convert these into integers."""
+
 
 def convert_date_string_to_integers():
     date_string = input("Enter a date in the format YYYY-MM-DD: ")
 
     # Check if the input contains only digits and hyphens
     for char in date_string:
-        if not (char.isdigit() or char == '-'):
+        if not (char.isdigit() or char == "-"):
             print("Invalid input. Please enter only numeric characters and hyphens.")
             return convert_date_string_to_integers()
 
@@ -41,14 +42,11 @@ def convert_date_string_to_integers():
         print(f"Day: {day} ({type(day)})")
 
     except ValueError:
-        print("Invalid date. Month can't be more than 12 and day can't be more than 31.")
+        print(
+            "Invalid date. Month can't be more than 12 and day can't be more than 31."
+        )
         return convert_date_string_to_integers()
 
 
 if __name__ == "__main__":
     convert_date_string_to_integers()
-
-
-
-
-
