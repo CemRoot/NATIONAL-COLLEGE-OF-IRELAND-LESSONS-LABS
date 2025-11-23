@@ -1,19 +1,22 @@
-from kafka import KafkaConsumer
 import json
+
+from kafka import KafkaConsumer
 
 # Create Kafka consumer
 consumer = KafkaConsumer(
-    'iris_data',
-    bootstrap_servers='localhost:9092',
-    auto_offset_reset='earliest',
+    "iris_data",
+    bootstrap_servers="localhost:9092",
+    auto_offset_reset="earliest",
     enable_auto_commit=True,
-    group_id='iris-group',
-    value_deserializer=lambda x: json.loads(x.decode('utf-8'))
+    group_id="iris-group",
+    value_deserializer=lambda x: json.loads(x.decode("utf-8")),
 )
+
 
 # Function to process incoming data
 def process_data(data):
     print(f"Processing data: {data}")
+
 
 # Consume messages
 try:
