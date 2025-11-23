@@ -127,7 +127,18 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-.idea
+
+# IDE - PyCharm / IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# IDE - VS Code
+.vscode/
+*.code-workspace
+
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -151,12 +162,45 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# Operating System Files
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Project Specific
 # My Directory
 /LABS/Data Analytics for Artificial Intelligence/CA_EXAMPLE/
 /LABS/Data Analytics for Artificial Intelligence/CA_Test_CemKoyluoglu/
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
+
+# Data files (uncomment if you want to ignore large datasets)
+# *.csv
+# *.xlsx
+# *.json
+# *.parquet
+
+# Model files (uncomment if you want to ignore trained models)
+# *.h5
+# *.pkl
+# *.joblib
+# *.pt
+# *.pth
