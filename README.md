@@ -5,7 +5,7 @@
 ![NCI Logo](https://img.shields.io/badge/NCI-Dublin-0052A5?style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg?style=flat-square&logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![Python](https://img.shields.io/badge/Python-3.11%2B-blue.svg?style=flat-square&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange.svg?style=flat-square&logo=jupyter&logoColor=white)](https://jupyter.org/)
 [![GitHub Stars](https://img.shields.io/github/stars/CemRoot/NATIONAL-COLLEGE-OF-IRELAND-LESSONS-LABS?style=flat-square)](https://github.com/CemRoot/NATIONAL-COLLEGE-OF-IRELAND-LESSONS-LABS/stargazers)
 [![GitHub Forks](https://img.shields.io/github/forks/CemRoot/NATIONAL-COLLEGE-OF-IRELAND-LESSONS-LABS?style=flat-square)](https://github.com/CemRoot/NATIONAL-COLLEGE-OF-IRELAND-LESSONS-LABS/network/members)
@@ -267,7 +267,7 @@ NATIONAL-COLLEGE-OF-IRELAND-LESSONS-LABS/
 
 Before starting, ensure you have:
 
-- **Python 3.8+** ([Download](https://www.python.org/downloads/))
+- **Python 3.11+** ([Download](https://www.python.org/downloads/))
 - **pip** (Python package manager)
 - **Git** ([Download](https://git-scm.com/downloads))
 - **Jupyter Notebook** or **JupyterLab**
